@@ -1,0 +1,51 @@
+<h1>Patient Registration Form</h1>
+<form>
+  <!-- Personal Information -->
+  <fieldset>
+    <legend>Personal Information</legend>
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required placeholder="Enter full name"><br><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br><br>
+
+    <label for="bloodGroup">Blood Group:</label>
+    <select id="bloodGroup" name="bloodGroup" required>
+      <option value="">Select Blood Group</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+    </select>
+  </fieldset>
+  <br>
+
+  <!-- Contact Information -->
+  <fieldset>
+    <legend>Contact Information</legend>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="Enter email"><br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required placeholder="Enter phone number"><br><br>
+
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address" rows="3" cols="40" required placeholder="Enter address"></textarea>
+  </fieldset>
+  <br>
+
+  <!-- Submit Button -->
+  <button type="submit">Submit</button>
+</form>
