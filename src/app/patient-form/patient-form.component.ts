@@ -1,19 +1,34 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common'
 
 @Component({
   selector: 'app-patient-form',
   templateUrl: './patient-form.component.html',
   styleUrls: ['./patient-form.component.css'],
+  standalone:true,
+  imports:[FormsModule,CommonModule],
 })
 export class PatientFormComponent {
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      console.log('Form Submitted:', form.value);
-      alert('Form Submitted Successfully!');
-      form.reset();
-    } else {
-      alert('Please fix the errors in the form.');
+  patient={
+    name :'',
+    dob : '',
+    gender : '',
+    bloodGroup :'',
+    email : '',
+    phone : '',
+    address : '',
+  }
+  
+  onSubmit(form: any) {
+    if (form.invalid) {
+      Object.keys(form.controls).forEach((key) => {
+        form.controls[key].markAsTouched(); // Corrected method name
+      });
+      return;
     }
+    console.log('Form Submitted:', form.value);
+    alert('Form Submitted Successfully!');
+    form.reset();
   }
 }

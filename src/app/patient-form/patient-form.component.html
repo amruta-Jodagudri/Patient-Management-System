@@ -1,6 +1,5 @@
-<h1>Patient Registration Form</h1>
+<!-- <h1>Patient Registration Form</h1>
 <form>
-  <!-- Personal Information -->
   <fieldset>
     <legend>Personal Information</legend>
     <label for="name">Full Name:</label>
@@ -32,7 +31,6 @@
   </fieldset>
   <br>
 
-  <!-- Contact Information -->
   <fieldset>
     <legend>Contact Information</legend>
     <label for="email">Email:</label>
@@ -46,6 +44,122 @@
   </fieldset>
   <br>
 
-  <!-- Submit Button -->
+  <button type="submit">Submit</button>
+</form> -->
+
+
+
+<!-- validation working but manually -->
+<h1>Patient Registration Form</h1>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div>
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="patient.name"
+      #name="ngModel"
+      required
+    />
+    <div *ngIf="name.invalid && name.touched" class="error">
+      Please enter your name.
+    </div>
+  </div>
+
+  <div>
+    <label for="dob">Date of Birth:</label>
+    <input
+      type="date"
+      id="dob"
+      name="dob"
+      [(ngModel)]="patient.dob"
+      #dob="ngModel"
+      required
+    />
+    <div *ngIf="dob.invalid && dob.touched" class="error">
+      Please enter your date of birth.
+    </div>
+  </div>
+
+  <div>
+    <label for="gender">Gender:</label>
+    <select
+      id="gender"
+      name="gender"
+      [(ngModel)]="patient.gender"
+      #gender="ngModel"
+      required
+    >
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <div *ngIf="gender.invalid && gender.touched" class="error">
+      Please select your gender.
+    </div>
+  </div>
+
+  <div>
+    <label for="bloodGroup">Blood Group:</label>
+    <input
+      type="text"
+      id="bloodGroup"
+      name="bloodGroup"
+      [(ngModel)]="patient.bloodGroup"
+      #bloodGroup="ngModel"
+      required
+    />
+    <div *ngIf="bloodGroup.invalid && bloodGroup.touched" class="error">
+      Please enter your blood group.
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="patient.email"
+      #email="ngModel"
+      required
+    />
+    <div *ngIf="email.invalid && email.touched" class="error">
+      Please enter a valid email.
+    </div>
+  </div>
+
+  <div>
+    <label for="phone">Phone:</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      [(ngModel)]="patient.phone"
+      #phone="ngModel"
+      required
+    />
+    <div *ngIf="phone.invalid && phone.touched" class="error">
+      Please enter your phone number.
+    </div>
+  </div>
+
+  <div>
+    <label for="address">Address:</label>
+    <textarea
+      id="address"
+      name="address"
+      [(ngModel)]="patient.address"
+      #address="ngModel"
+      required
+    ></textarea>
+    <div *ngIf="address.invalid && address.touched" class="error">
+      Please enter your address.
+    </div>
+  </div>
+
   <button type="submit">Submit</button>
 </form>
+
+
