@@ -1,55 +1,3 @@
-<!-- <h1>Patient Registration Form</h1>
-<form>
-  <fieldset>
-    <legend>Personal Information</legend>
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="name" required placeholder="Enter full name"><br><br>
-
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob" required><br><br>
-
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="">Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
-    </select><br><br>
-
-    <label for="bloodGroup">Blood Group:</label>
-    <select id="bloodGroup" name="bloodGroup" required>
-      <option value="">Select Blood Group</option>
-      <option value="A+">A+</option>
-      <option value="A-">A-</option>
-      <option value="B+">B+</option>
-      <option value="B-">B-</option>
-      <option value="O+">O+</option>
-      <option value="O-">O-</option>
-      <option value="AB+">AB+</option>
-      <option value="AB-">AB-</option>
-    </select>
-  </fieldset>
-  <br>
-
-  <fieldset>
-    <legend>Contact Information</legend>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required placeholder="Enter email"><br><br>
-
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required placeholder="Enter phone number"><br><br>
-
-    <label for="address">Address:</label><br>
-    <textarea id="address" name="address" rows="3" cols="40" required placeholder="Enter address"></textarea>
-  </fieldset>
-  <br>
-
-  <button type="submit">Submit</button>
-</form> -->
-
-
-
-<!-- validation working but manually -->
 <h1>Patient Registration Form</h1>
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div>
@@ -58,12 +6,13 @@
       type="text"
       id="name"
       name="name"
-      [(ngModel)]="patient.name"
+      [(ngModel)]="patientModel.name"
       #name="ngModel"
       required
+      pattern="[A-Za-z ]+"
     />
     <div *ngIf="name.invalid && name.touched" class="error">
-      Please enter your name.
+      Please enter a valid name (only alphabets allowed).
     </div>
   </div>
 
@@ -73,7 +22,7 @@
       type="date"
       id="dob"
       name="dob"
-      [(ngModel)]="patient.dob"
+      [(ngModel)]="patientModel.dob"
       #dob="ngModel"
       required
     />
@@ -87,7 +36,7 @@
     <select
       id="gender"
       name="gender"
-      [(ngModel)]="patient.gender"
+      [(ngModel)]="patientModel.gender"
       #gender="ngModel"
       required
     >
@@ -106,12 +55,13 @@
       type="text"
       id="bloodGroup"
       name="bloodGroup"
-      [(ngModel)]="patient.bloodGroup"
+      [(ngModel)]="patientModel.bloodGroup"
       #bloodGroup="ngModel"
       required
+      pattern="^(A|B|AB|O)[+-]$"
     />
     <div *ngIf="bloodGroup.invalid && bloodGroup.touched" class="error">
-      Please enter your blood group.
+      Please enter a valid blood group (e.g., A+, O-, etc.).
     </div>
   </div>
 
@@ -121,7 +71,7 @@
       type="email"
       id="email"
       name="email"
-      [(ngModel)]="patient.email"
+      [(ngModel)]="patientModel.email"
       #email="ngModel"
       required
     />
@@ -136,12 +86,13 @@
       type="tel"
       id="phone"
       name="phone"
-      [(ngModel)]="patient.phone"
+      [(ngModel)]="patientModel.phone"
       #phone="ngModel"
       required
+      pattern="[0-9]{10}"
     />
     <div *ngIf="phone.invalid && phone.touched" class="error">
-      Please enter your phone number.
+      Please enter a valid 10-digit phone number.
     </div>
   </div>
 
@@ -150,7 +101,7 @@
     <textarea
       id="address"
       name="address"
-      [(ngModel)]="patient.address"
+      [(ngModel)]="patientModel.address"
       #address="ngModel"
       required
     ></textarea>
@@ -162,4 +113,30 @@
   <button type="submit">Submit</button>
 </form>
 
-
+<div>
+  <h2>Patient List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.dob }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.bloodGroup }}</td>
+        <td>{{ patient.email }}</td>
+        <td>{{ patient.phone }}</td>
+        <td>{{ patient.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

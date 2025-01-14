@@ -1,59 +1,72 @@
-# PMS
+# Project Setup Instructions
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Follow the steps below to set up and run the project:
 
-## Development server
+## Clone the Repository
+1. Open a terminal and navigate to the folder where you want to clone the repository.
+2. Run the following command:
+   ```bash
+   git clone https://github.com/amruta-Jodagudri/Patient-Management-System
+   ```
 
-To start a local development server, run:
+## Install Dependencies
+3. Navigate to the project folder:
+   ```bash
+   cd Patient-Management-System
+   ```
+4. Install the required dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-ng serve
-```
+## Set Up Fake Server
+5. Navigate **outside** of the current application folder to set up the fake server:
+   ```bash
+   cd ..
+   ```
+6. Install `json-server` globally:
+   ```bash
+   npm install -g json-server
+   ```
+7. Create a file named `db.json` in the new folder and add the following content:
+   ```json
+   {
+     "posts": [
+       { "id": "1", "title": "a title", "views": 100 },
+       { "id": "2", "title": "another title", "views": 200 }
+     ],
+     "comments": [
+       { "id": "1", "text": "a comment about post 1", "postId": "1" },
+       { "id": "2", "text": "another comment about post 1", "postId": "1" }
+     ],
+     "profile": {
+       "name": "typicode"
+     }
+   }
+   ```
+8. Run the fake server with the following command:
+   ```bash
+   npx json-server db.json
+   ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Run the Application
+9. Navigate back to the application folder:
+   ```bash
+   cd Patient-Management-System
+   ```
+10. Start the application using Angular CLI:
+    ```bash
+    ng serve
+    ```
 
-## Code scaffolding
+## Access the Application
+11. Open your browser and visit:
+    ```
+    http://localhost:4200
+    ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Access the Fake Server
+12. The fake server will be running at:
+    ```
+    http://localhost:3000
+    
